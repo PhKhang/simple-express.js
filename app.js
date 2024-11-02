@@ -16,6 +16,13 @@ app.get('/', async (req, res) => {
   // res.send('Hello World, programmed to work but not to feel')
 })
 
+app.get('/all', async (req, res) => {
+  let collection = await db.collection("posts");
+  let results = await collection.find({}).toArray();
+  res.send(results).status(200);
+  // res.send('Hello World, programmed to work but not to feel')
+})
+
 app.listen(port, '::', () => {
   console.log(`Example app listening on port ${port}`)
 })
