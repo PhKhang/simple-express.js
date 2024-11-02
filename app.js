@@ -2,6 +2,7 @@ import cors from "cors";
 import db from "./connection.js"
 import { ObjectId } from "mongodb";
 import express from "express";
+import 'dotenv/config'
 
 const app = express()
 app.use(cors());
