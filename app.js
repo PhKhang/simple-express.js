@@ -1,9 +1,18 @@
-const express = require('express')
+import cors from "cors";
+import db from "./connection.js"
+import { ObjectId } from "mongodb";
+import express from "express";
+
 const app = express()
+app.use(cors());
+app.use(express.json());
 const port = process.env.PORT || 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World, programmed to work but not to feel')
+app.get('/', async (req, res) => {
+  let collection = await db.collection("posts");
+  let results = await collection.find({}).toArray();
+  res.send(results).status(200);
+  // res.send('Hello World, programmed to work but not to feel')
 })
 
 app.listen(port, '::', () => {
