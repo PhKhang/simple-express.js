@@ -24,9 +24,9 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/all', async (req, res) => {
-  let posts = await db.collection("posts");
-  let results = await posts.find({}).toArray();
-  res.send(results).status(200);
+  // let posts = await db.collection("posts");
+  // let results = await posts.find({}).toArray();
+  // res.send(results).status(200);
   // res.send('Hello World, programmed to work but not to feel')
 })
 
