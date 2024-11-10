@@ -17,16 +17,16 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const port = process.env.PORT || 3000
 
 app.get('/', async (req, res) => {
-  let collection = await db.collection("posts");
-  let results = await collection.find({}).toArray();
-  res.send(results).status(200);
-  // res.send('Hello World, programmed to work but not to feel')
+  // let collection = await db.collection("posts");
+  // let results = await collection.find({}).toArray();
+  // res.send(results).status(200);
+  res.send('Hello World, programmed to work but not to feel')
 })
 
 app.get('/all', async (req, res) => {
-  // let posts = await db.collection("posts");
-  // let results = await posts.find({}).toArray();
-  // res.send(results).status(200);
+  let posts = await db.collection("posts");
+  let results = await posts.find({}).toArray();
+  res.send(results).status(200);
   // res.send('Hello World, programmed to work but not to feel')
 })
 
