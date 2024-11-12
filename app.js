@@ -53,8 +53,9 @@ const upload = multer({
     },
     contentType: multerS3.AUTO_CONTENT_TYPE,
     key: function (req, file, cb) {
-      cb(null, Date.now().toString())
-    }
+      cb(null, `${Date.now().toString()}-${file.originalname}`)
+    },
+    
   })
 });
 
@@ -62,7 +63,8 @@ app.post('/upload', upload.single('file'), (req, res) => {
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
   }
-  res.status(200).send({ filename: req.file.filename, path: req.file.path });
+  console.log("File uploaded: ", req.file.key)
+  res.status(200).send({ filename: `https://pub-b0a9bdcea1cd4f6ca28d98f878366466.r2.dev/${req.file.key}` });
 });
 
 app.listen(port, '::', () => {
