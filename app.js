@@ -20,7 +20,7 @@ app.get('/', async (req, res) => {
   // let collection = await db.collection("posts");
   // let results = await collection.find({}).toArray();
   // res.send(results).status(200);
-  res.send('Hello World, programmed to work but not to feel')
+  res.send('OK').status(200);
 })
 
 app.get('/all', async (req, res) => {
